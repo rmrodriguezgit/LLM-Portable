@@ -1,0 +1,21 @@
+# Build
+bin/
+obj/
+dist/
+*.user
+.vs/
+.vscode/
+.idea/
+.dotnet/
+
+# Artefactos de runtime de la carpeta portable (si se prueba desde el repo)
+/models/
+/env/
+/repo/
+/data/
+/LocalLLM-Gateway*.exe
+
+# Python
+__pycache__/
+*.pyc
+.venv/

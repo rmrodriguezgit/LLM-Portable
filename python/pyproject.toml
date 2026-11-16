@@ -1,0 +1,9 @@
+[project]
+name = "localllm-hooks"
+version = "0.1.0"
+description = "Scripts auxiliares de LocalLLM Portable ejecutados con el uv portable (bin\\uv\\uv.exe) en env\\.venv"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
