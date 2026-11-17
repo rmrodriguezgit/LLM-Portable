@@ -19,7 +19,7 @@
 param(
     [string]$Version = "1.0.0",
     [string]$Configuration = "Release",
-    [string]$OutputDir = (Join-Path $PSScriptRoot "dist"),
+    [string]$OutputDir = "",
     [switch]$IncludeTools,
     [switch]$IncludeRepo,
     [string]$Dotnet = "dotnet"
@@ -29,7 +29,9 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 Set-StrictMode -Version Latest
 
-$root      = $PSScriptRoot
+# En Windows PowerShell 5.1 $PSScriptRoot esta vacio dentro de param(): se resuelve aqui.
+$root      = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
+if (-not $OutputDir) { $OutputDir = Join-Path $root "dist" }
 $project   = Join-Path $root "src\LocalLLM.Gateway\LocalLLM.Gateway.csproj"
 $pkgName   = "LocalLLM-Portable"
 $staging   = Join-Path $OutputDir "staging\$pkgName"
